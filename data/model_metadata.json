@@ -1,0 +1,6 @@
+{
+  "model_type": "RandomSurvivalForest",
+  "validation_c_index": 0.9356846473029046,
+  "n_features": 62,
+  "random_state": 42
+}
