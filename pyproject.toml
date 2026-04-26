@@ -1,0 +1,23 @@
+[project]
+name = "widsirelandlab2026"
+version = "0.1.0"
+description = "WiDS Datathon 2026 - Wildfire Evacuation Zone Impact Prediction using Survival Analysis"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "catboost>=1.2.10",
+    "ipympl>=0.10.0",
+    "jupyter-black>=0.4.0",
+    "jupyterlab>=4.5.6",
+    "lifelines>=0.29.0",
+    "lightgbm>=4.6.0",
+    "matplotlib>=3.10.8",
+    "numpy>=2.4.4",
+    "pandas>=3.0.2",
+    "scikit-learn>=1.8.0",
+    "scikit-survival>=0.23.0",
+    "scipy>=1.17.1",
+    "seaborn>=0.13.2",
+    "statsmodels>=0.14.6",
+    "xgboost>=3.2.0",
+]
