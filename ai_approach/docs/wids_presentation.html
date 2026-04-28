@@ -12,18 +12,22 @@
   }
 
   :root {
-    --primary: #ff6b35;
-    --secondary: #4cc9f0;
-    --accent: #7bed9f;
-    --dark: #0d0f14;
-    --surface: #161920;
-    --text: #e8eaf0;
-    --text-dim: #8892a4;
+    --primary: #2563eb;
+    --secondary: #0891b2;
+    --accent: #059669;
+    --warning: #f59e0b;
+    --light: #f8fafc;
+    --surface: #ffffff;
+    --surface2: #e0f2fe;
+    --surface3: #dbeafe;
+    --text: #1e293b;
+    --text-dim: #64748b;
+    --border: #cbd5e1;
   }
 
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: var(--dark);
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f8fafc 100%);
     color: var(--text);
     overflow: hidden;
   }
@@ -42,7 +46,7 @@
     justify-content: center;
     align-items: center;
     padding: 60px 80px;
-    background: linear-gradient(135deg, #0d0f14 0%, #1a1025 50%, #0d1520 100%);
+    background: transparent;
     position: absolute;
     top: 0;
     left: 0;
@@ -74,7 +78,7 @@
 
   .title-slide .subtitle {
     font-size: 28px;
-    color: var(--text-dim);
+    color: var(--text);
     margin-bottom: 40px;
   }
 
@@ -114,9 +118,17 @@
   .toc-item {
     background: var(--surface);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     border-left: 4px solid var(--primary);
     font-size: 20px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .toc-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 
   .toc-item .number {
@@ -139,10 +151,12 @@
   }
 
   ul li::before {
-    content: '→';
+    content: '•';
     position: absolute;
     left: 0;
     color: var(--primary);
+    font-size: 28px;
+    line-height: 1.2;
   }
 
   /* Two Column Layout */
@@ -156,17 +170,21 @@
   .column {
     background: var(--surface);
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
   /* Highlight Box */
   .highlight {
-    background: var(--surface);
+    background: linear-gradient(135deg, #ffffff, #f0fdf4);
     border-left: 4px solid var(--accent);
     padding: 20px 30px;
     margin: 20px 0;
-    border-radius: 0 10px 10px 0;
+    border-radius: 12px;
     font-size: 22px;
+    border: 1px solid #86efac;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   }
 
   /* Icon */
@@ -184,16 +202,27 @@
   }
 
   .stat-box {
-    background: var(--surface);
+    background: linear-gradient(135deg, #ffffff, #dbeafe);
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
+    border: 2px solid #93c5fd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+  }
+
+  .stat-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 
   .stat-number {
     font-size: 48px;
     font-weight: bold;
-    color: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin-bottom: 10px;
   }
 
@@ -214,9 +243,9 @@
   }
 
   .nav-btn {
-    background: var(--surface);
+    background: var(--primary);
     border: 2px solid var(--primary);
-    color: var(--text);
+    color: white;
     padding: 12px 24px;
     border-radius: 8px;
     cursor: pointer;
@@ -225,7 +254,8 @@
   }
 
   .nav-btn:hover {
-    background: var(--primary);
+    background: var(--secondary);
+    border-color: var(--secondary);
     transform: translateY(-2px);
   }
 
@@ -249,13 +279,13 @@
   }
 
   th {
-    background: var(--surface);
-    color: var(--primary);
+    background: var(--surface2);
+    color: var(--text);
     font-weight: bold;
   }
 
   tr:hover {
-    background: rgba(255, 107, 53, 0.1);
+    background: var(--surface);
   }
 
   /* Score Badge */
@@ -268,18 +298,21 @@
   }
 
   .score-high {
-    background: rgba(123, 237, 159, 0.2);
-    color: var(--accent);
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
   }
 
   .score-medium {
-    background: rgba(76, 201, 240, 0.2);
-    color: var(--secondary);
+    background: #dbeafe;
+    color: #1e40af;
+    border: 1px solid #93c5fd;
   }
 
   .score-low {
-    background: rgba(255, 107, 53, 0.2);
-    color: var(--primary);
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
   }
 
   /* Workflow Diagram */
@@ -293,11 +326,19 @@
   .workflow-step {
     background: var(--surface);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     text-align: center;
     flex: 1;
     margin: 0 10px;
     border-top: 4px solid var(--primary);
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+  }
+
+  .workflow-step:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   }
 
   .workflow-arrow {
@@ -316,8 +357,16 @@
   .key-point {
     background: var(--surface);
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
     border-left: 4px solid var(--accent);
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+  }
+
+  .key-point:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
   .key-point-title {
@@ -331,6 +380,100 @@
     font-size: 16px;
     color: var(--text-dim);
   }
+
+  /* Profile Slide */
+  .profile-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-top: 20px;
+  }
+
+  .profile-image {
+    flex-shrink: 0;
+  }
+
+  .profile-image img {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-info {
+    flex: 1;
+  }
+
+  .profile-name {
+    font-size: 42px;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+
+  .profile-title {
+    font-size: 26px;
+    color: var(--secondary);
+    margin-bottom: 25px;
+  }
+
+  .profile-details {
+    list-style: none;
+    font-size: 22px;
+  }
+
+  .profile-details li {
+    margin-bottom: 12px;
+    padding-left: 30px;
+    position: relative;
+  }
+
+  .profile-details li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* Analysis Slide */
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 20px;
+  }
+
+  .analysis-box {
+    background: var(--surface);
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent);
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .analysis-box h3 {
+    font-size: 24px;
+    color: var(--accent);
+    margin-bottom: 15px;
+  }
+
+  .analysis-box ul {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .analysis-box li {
+    margin-bottom: 8px;
+    padding-left: 25px;
+  }
+
+  .analysis-box li::before {
+    font-size: 14px;
+  }
 </style>
 </head>
 <body>
@@ -343,9 +486,9 @@
     <div class="subtitle">Wildfire Evacuation Zone Impact Prediction</div>
     <div class="meta">
       <p>WiDS Dublin Conference 2026</p>
-      <p style="margin-top: 10px; color: var(--text-dim);">Presented by Bob (AI Assistant)</p>
+      <p style="margin-top: 10px; color: var(--text-dim);">Presented by David Colton & Bob (AI Assistant)</p>
     </div>
-    <div class="slide-number">1 / 10</div>
+    <div class="slide-number">1 / 13</div>
   </div>
 
   <!-- Slide 2: Table of Contents -->
@@ -354,35 +497,65 @@
     <div class="content">
       <div class="toc-grid">
         <div class="toc-item">
-          <span class="number">01</span> About Bob (AI Assistant)
+          <span class="number">01</span> About David Colton
         </div>
         <div class="toc-item">
-          <span class="number">02</span> AI Modes & Data Scientist Mode
+          <span class="number">02</span> About Bob (AI Assistant)
         </div>
         <div class="toc-item">
-          <span class="number">03</span> Project Overview
+          <span class="number">03</span> AI Modes & Data Scientist Mode
         </div>
         <div class="toc-item">
-          <span class="number">04</span> Our Approach
+          <span class="number">04</span> Project Overview
         </div>
         <div class="toc-item">
-          <span class="number">05</span> Key Results
+          <span class="number">05</span> Our Approach
         </div>
         <div class="toc-item">
-          <span class="number">06</span> Notebook Comparison
+          <span class="number">06</span> Key Results
         </div>
         <div class="toc-item">
-          <span class="number">07</span> Improvement Plan
+          <span class="number">07</span> Notebook Comparison
         </div>
         <div class="toc-item">
-          <span class="number">08</span> My Thoughts
+          <span class="number">08</span> Improvement Plan
+        </div>
+        <div class="toc-item">
+          <span class="number">09</span> How David Used Bob
+        </div>
+        <div class="toc-item">
+          <span class="number">10</span> Closing Thoughts
         </div>
       </div>
     </div>
-    <div class="slide-number">2 / 10</div>
+    <div class="slide-number">2 / 13</div>
   </div>
 
-  <!-- Slide 3: About Bob -->
+  <!-- Slide 3: About David Colton -->
+  <div class="slide">
+    <h2>About David Colton</h2>
+    <div class="content">
+      <div class="profile-container">
+        <div class="profile-image">
+          <img src="david_colton_linkedin_qr.jpeg" alt="David Colton LinkedIn QR Code" style="width: 280px; height: auto; border-radius: 8px; border: 2px solid var(--border); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
+        </div>
+        <div class="profile-info">
+          <div class="profile-name">David Colton</div>
+          <div class="profile-title">Support Data Analyst at IBM</div>
+          <ul class="profile-details">
+            <li>21 years with IBM</li>
+            <li>Data analysis & insights specialist</li>
+            <li>Python enthusiast</li>
+            <li>Dataframe of choice is Polars</li>
+            <li>Database is DuckDB</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="slide-number">3 / 13</div>
+  </div>
+
+  <!-- Slide 4: About Bob -->
   <div class="slide">
     <h2>About Bob (AI Assistant)</h2>
     <div class="content">
@@ -411,10 +584,10 @@
         <strong>Key Strength:</strong> I combine deep technical knowledge with the ability to understand context, explain decisions, and maintain high code quality standards.
       </div>
     </div>
-    <div class="slide-number">3 / 10</div>
+    <div class="slide-number">4 / 13</div>
   </div>
 
-  <!-- Slide 4: Modes & Data Scientist Mode -->
+  <!-- Slide 5: Modes & Data Scientist Mode -->
   <div class="slide">
     <h2>AI Modes & Data Scientist Mode</h2>
     <div class="content">
@@ -454,10 +627,10 @@
         </ul>
       </div>
     </div>
-    <div class="slide-number">4 / 10</div>
+    <div class="slide-number">5 / 13</div>
   </div>
 
-  <!-- Slide 5: Project Overview -->
+  <!-- Slide 6: Project Overview -->
   <div class="slide">
     <h2>Project Overview</h2>
     <div class="content">
@@ -501,10 +674,10 @@
         </div>
       </div>
     </div>
-    <div class="slide-number">5 / 10</div>
+    <div class="slide-number">6 / 13</div>
   </div>
 
-  <!-- Slide 6: Our Approach -->
+  <!-- Slide 7: Our Approach -->
   <div class="slide">
     <h2>Our Approach</h2>
     <div class="content">
@@ -553,10 +726,10 @@
         </div>
       </div>
     </div>
-    <div class="slide-number">6 / 10</div>
+    <div class="slide-number">7 / 13</div>
   </div>
 
-  <!-- Slide 7: Key Results -->
+  <!-- Slide 8: Key Results -->
   <div class="slide">
     <h2>Key Results</h2>
     <div class="content">
@@ -593,10 +766,10 @@
         <strong>Overall Score:</strong> 78/110 (comparable categories) - Strong foundation with excellent documentation and methodology
       </div>
     </div>
-    <div class="slide-number">7 / 10</div>
+    <div class="slide-number">8 / 13</div>
   </div>
 
-  <!-- Slide 8: Notebook Comparison Summary -->
+  <!-- Slide 9: Notebook Comparison Summary -->
   <div class="slide">
     <h2>Notebook Comparison</h2>
     <div class="content">
@@ -658,10 +831,10 @@
         <strong>Key Insight:</strong> We excel at understanding the problem (EDA, docs). Top performers excel at solving it (advanced modeling, ensembles).
       </div>
     </div>
-    <div class="slide-number">8 / 10</div>
+    <div class="slide-number">9 / 13</div>
   </div>
 
-  <!-- Slide 9: Improvement Plan -->
+  <!-- Slide 10: Improvement Plan -->
   <div class="slide">
     <h2>Improvement Plan</h2>
     <div class="content">
@@ -705,19 +878,119 @@
         </div>
       </div>
     </div>
-    <div class="slide-number">9 / 10</div>
+    <div class="slide-number">10 / 13</div>
   </div>
 
-  <!-- Slide 10: My Thoughts (Blank) -->
+  <!-- Slide 11: How David Used Bob -->
   <div class="slide">
-    <h2>My Thoughts</h2>
+    <h2>How David Used Bob</h2>
     <div class="content">
-      <div style="text-align: center; padding: 100px 0;">
-        <div style="font-size: 80px; margin-bottom: 30px;">💭</div>
-        <p style="font-size: 28px; color: var(--text-dim);">To be completed...</p>
+      <div class="analysis-grid">
+        <div class="analysis-box" style="border-left-color: var(--accent);">
+          <h3>✓ What Worked Well</h3>
+          <ul>
+            <li>Clear, specific task requests</li>
+            <li>Iterative refinement approach</li>
+            <li>Leveraged multiple AI modes effectively</li>
+            <li>Good use of context (provided files)</li>
+            <li>Requested explanations when needed</li>
+            <li>Validated outputs before proceeding</li>
+          </ul>
+        </div>
+        <div class="analysis-box" style="border-left-color: var(--primary);">
+          <h3>→ Could Improve</h3>
+          <ul>
+            <li>Earlier use of Data Scientist mode</li>
+            <li>More upfront planning for complex tasks</li>
+            <li>Break large tasks into smaller chunks</li>
+            <li>Use read_file for multiple files at once</li>
+            <li>More explicit success criteria</li>
+            <li>Earlier Git commits during workflow</li>
+          </ul>
+        </div>
+        <div class="analysis-box" style="border-left-color: var(--secondary);">
+          <h3>🎯 Key Patterns</h3>
+          <ul>
+            <li>Started with exploration (EDA)</li>
+            <li>Built incrementally (4 notebooks)</li>
+            <li>Used external AI (Claude) for comparison</li>
+            <li>Created documentation throughout</li>
+            <li>Requested presentation for conference</li>
+            <li>Iterative refinement of outputs</li>
+          </ul>
+        </div>
+        <div class="analysis-box" style="border-left-color: var(--accent);">
+          <h3>💡 Collaboration Insights</h3>
+          <ul>
+            <li>Strong domain knowledge guided AI</li>
+            <li>Good balance of autonomy & guidance</li>
+            <li>Effective use of AI for tedious tasks</li>
+            <li>Human judgment on key decisions</li>
+            <li>AI accelerated documentation</li>
+            <li>Complementary strengths leveraged</li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="slide-number">10 / 10</div>
+    <div class="slide-number">11 / 13</div>
+  </div>
+
+  <!-- Slide 12: Lessons Learned -->
+  <div class="slide">
+    <h2>Lessons Learned</h2>
+    <div class="content">
+      <div class="two-column">
+        <div class="column">
+          <h3>🎓 For AI Users</h3>
+          <ul style="font-size: 18px;">
+            <li>Be specific with requirements</li>
+            <li>Provide context & examples</li>
+            <li>Iterate and refine outputs</li>
+            <li>Validate AI suggestions</li>
+            <li>Use appropriate modes/tools</li>
+            <li>Document as you go</li>
+          </ul>
+        </div>
+        <div class="column">
+          <h3>🤖 For AI Development</h3>
+          <ul style="font-size: 18px;">
+            <li>Specialized modes are powerful</li>
+            <li>Context awareness is critical</li>
+            <li>Explain reasoning clearly</li>
+            <li>Handle large files efficiently</li>
+            <li>Support iterative workflows</li>
+            <li>Maintain code quality standards</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="highlight" style="margin-top: 30px; font-size: 20px;">
+        <strong>Key Takeaway:</strong> The best results come from treating AI as a collaborative partner, not just a tool. Clear communication, domain expertise, and iterative refinement create powerful synergies.
+      </div>
+    </div>
+    <div class="slide-number">12 / 13</div>
+  </div>
+
+  <!-- Slide 13: Closing Thoughts -->
+  <div class="slide">
+    <h2>Closing Thoughts</h2>
+    <div class="content">
+      <div style="display: flex; gap: 30px; justify-content: center; align-items: stretch; margin-top: 60px;">
+        <div style="flex: 1; background: linear-gradient(135deg, #dbeafe, #bfdbfe); padding: 50px 30px; border-radius: 16px; text-align: center; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); border: 2px solid #93c5fd;">
+          <div style="font-size: 64px; margin-bottom: 20px;">🤖</div>
+          <div style="font-size: 32px; font-weight: bold; color: var(--primary);">Automate</div>
+        </div>
+        <div style="flex: 1; background: linear-gradient(135deg, #ccfbf1, #99f6e4); padding: 50px 30px; border-radius: 16px; text-align: center; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); border: 2px solid #5eead4;">
+          <div style="font-size: 64px; margin-bottom: 20px;">⚡</div>
+          <div style="font-size: 32px; font-weight: bold; color: var(--secondary);">Productivity</div>
+        </div>
+        <div style="flex: 1; background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 50px 30px; border-radius: 16px; text-align: center; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); border: 2px solid #fbbf24;">
+          <div style="font-size: 64px; margin-bottom: 20px;">🤝</div>
+          <div style="font-size: 32px; font-weight: bold; color: var(--warning);">TRUST...!</div>
+        </div>
+      </div>
+    </div>
+    <div class="slide-number">13 / 13</div>
   </div>
 
 </div>
